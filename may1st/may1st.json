@@ -1,0 +1,41 @@
+{
+  "name" : "may1st",
+  "jobMode" : "VISUAL",
+  "description" : "may1st",
+  "role" : "arn:aws:iam::471112680641:role/may1strole",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 1
+  },
+  "command" : {
+    "name" : "glueetl",
+    "scriptLocation" : "s3://aws-glue-assets-471112680641-us-east-1/scripts/may1st.py",
+    "pythonVersion" : "3"
+  },
+  "defaultArguments" : {
+    "--enable-metrics" : "true",
+    "--enable-spark-ui" : "true",
+    "--spark-event-logs-path" : "s3://aws-glue-assets-471112680641-us-east-1/sparkHistoryLogs/",
+    "--enable-job-insights" : "false",
+    "--enable-observability-metrics" : "true",
+    "--enable-glue-datacatalog" : "true",
+    "--enable-continuous-cloudwatch-log" : "true",
+    "--job-bookmark-option" : "job-bookmark-disable",
+    "--job-language" : "python",
+    "--TempDir" : "s3://aws-glue-assets-471112680641-us-east-1/temporary/"
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 10,
+  "timeout" : 2880,
+  "maxCapacity" : 10.0,
+  "glueVersion" : "4.0",
+  "numberOfWorkers" : 10,
+  "workerType" : "G.1X",
+  "executionClass" : "STANDARD",
+  "codeGenConfigurationNodes" : "{\"node-1724343421339\":{\"S3CsvSource\":{\"AdditionalOptions\":{\"EnableSamplePath\":false,\"SamplePath\":\"s3://aug222222/Bigdata_Masters_Program_Brouchere.pdf.pdf\"},\"Escaper\":\"\",\"Exclusions\":[],\"Name\":\"Amazon S3\",\"OptimizePerformance\":false,\"Paths\":[\"s3://aug222222/Bigdata_Masters_Program_Brouchere.pdf.pdf\"],\"QuoteChar\":\"quote\",\"Recurse\":true,\"Separator\":\"comma\",\"WithHeader\":true}},\"node-1724343437316\":{\"S3DirectTarget\":{\"AutoDataQuality\":{\"IsEnabled\":false},\"Compression\":\"snappy\",\"Format\":\"csv\",\"Inputs\":[\"node-1724343421339\"],\"Name\":\"Amazon S3\",\"PartitionKeys\":[],\"Path\":\"s3://aug1567\",\"SchemaChangePolicy\":{\"EnableUpdateCatalog\":false}}}}",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "spark-1234",
+    "branch" : "master",
+    "folder" : "may1st"
+  }
+}
