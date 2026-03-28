@@ -1,0 +1,40 @@
+{
+  "name" : "march28job",
+  "jobMode" : "SCRIPT",
+  "description" : "",
+  "role" : "arn:aws:iam::060214573571:role/march26jobgluetos3",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 1
+  },
+  "command" : {
+    "name" : "glueetl",
+    "scriptLocation" : "s3://aws-glue-assets-060214573571-us-east-1/scripts/march28job.py",
+    "pythonVersion" : "3"
+  },
+  "defaultArguments" : {
+    "--enable-metrics" : "true",
+    "--enable-spark-ui" : "true",
+    "--spark-event-logs-path" : "s3://aws-glue-assets-060214573571-us-east-1/sparkHistoryLogs/",
+    "--enable-job-insights" : "false",
+    "--enable-observability-metrics" : "true",
+    "--conf" : "spark.eventLog.rolling.enabled=true",
+    "--enable-glue-datacatalog" : "true",
+    "--job-bookmark-option" : "job-bookmark-disable",
+    "--job-language" : "python",
+    "--TempDir" : "s3://aws-glue-assets-060214573571-us-east-1/temporary/"
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 2,
+  "timeout" : 480,
+  "maxCapacity" : 2.0,
+  "glueVersion" : "5.0",
+  "numberOfWorkers" : 2,
+  "workerType" : "G.1X",
+  "executionClass" : "STANDARD",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "spark-1234",
+    "branch" : "master",
+    "folder" : "march28job"
+  }
+}
